@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const Navbar = () => {
     return (
-        <nav className="w-full h-fit py-4 px-4 sm:px-8 lg:px-55 bg-background shadow-lg shadow-[#ffba26] flex justify-between items-center">
+        <nav className="w-full h-fit py-4 px-4 sm:px-8 lg:px-30 bg-background shadow-lg shadow-[#ffba26] flex justify-between items-center">
             <div className="flex items-center gap-[11.5px]">
                 <Image src="/logo.png" alt="FoodWagen logo" width={28} height={30} priority />
                 <p className="text-[31.11px] tracking-[-2.5%] leading-[120%] font-bold">
