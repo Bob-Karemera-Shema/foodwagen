@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
+import { Navbar } from "./components/navbar";
 import "./globals.css";
 
 const sourceSans3 = Source_Sans_3({
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body
         className={`${sourceSans3.className} antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>
