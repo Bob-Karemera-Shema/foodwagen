@@ -20,14 +20,16 @@ export const MealCard = ({ meal }: MealCardProps) => {
                     <Tag className="w-[18px] h-[22px] font-black" />
                     <span className="font-bold">${meal.Price}</span>
                 </div>
-                <Image src={meal.avatar || meal.food_image || meal.restaurant_image || "/food-placeholder.jpg"} alt={meal.name + " image"} fill />
+                {/* Using a placeholder because the api is returning images with different origins and impossible to whitelist them all */}
+                <Image src="/food-placeholder.jpg" alt={meal.name + " image"} fill />
             </div>
 
             {/* Extra details */}
             <div className="flex justify-between items-start">
                 <div className="flex items-center gap-6">
                     <div className="w-16 h-16 relative overflow-hidden rounded-xl">
-                        <Image src={meal.logo || meal.restaurant_logo || meal.restaurant?.logo || "/restaurant-placeholder.jpg"} alt="restaurant logo" fill />
+                        {/* Using a placeholder because the api is returning images with different origins and impossible to whitelist them all */}
+                        <Image src="/restaurant-placeholder.jpg" alt="restaurant logo" fill />
                     </div>
 
                     <div className="space-y-1">
