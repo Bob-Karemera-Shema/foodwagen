@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { AddEditDialog } from "./add-edit-dialog";
 
 export const Navbar = () => {
     return (
@@ -11,9 +12,13 @@ export const Navbar = () => {
                     <span className="text-food-light-orange">Wagen</span>
                 </p>
             </div>
-            <Button type="button" className="shadow-sm shadow-[#ffba26] bg-linear-to-r from-[#ffba26] to-[#ff9a0e] rounded-[14px] py-3 px-6">
-                Add Meal
-            </Button>
+            <AddEditDialog
+                trigger={
+                    <Button type="button" className="shadow-sm shadow-[#ffba26] bg-linear-to-r from-[#ffba26] to-[#ff9a0e] rounded-[14px] py-3 px-6">
+                        Add Meal
+                    </Button>
+                }
+            />
         </nav>
     );
 }

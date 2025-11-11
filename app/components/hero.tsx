@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { OrderCard } from "./order-card";
+import heroImage from "@/public/hero-img.png";
 
 type HeroProps = {
     onSearch: (query: string) => void;
@@ -17,7 +18,7 @@ export const Hero = ({ onSearch }: HeroProps) => {
             </article>
             <article className="relative hidden lg:block w-full h-full">
                 <Image
-                    src="/hero-img.png"
+                    src={heroImage}
                     alt="plate of food"
                     width={2804}
                     height={2804}
