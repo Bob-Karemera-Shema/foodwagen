@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { OrderCard } from "./order-card";
 
-export const Hero = () => {
+type HeroProps = {
+    onSearch: (query: string) => void;
+}
+
+export const Hero = ({ onSearch }: HeroProps) => {
     return (
         <section className="bg-food-light-orange overflow-hidden w-full h-[628px] grid grid-cols-1 lg:grid-cols-2">
             <article className="w-full h-full flex flex-col justify-center gap-8 px-4 lg:ml-30">
@@ -9,7 +13,7 @@ export const Hero = () => {
                     <h1 className="font-bold text-[88px]">Are you starving?</h1>
                     <h6 className="text-[22px]">Within a few clicks, find meals that are accessible near you</h6>
                 </div>
-                <OrderCard />
+                <OrderCard onSearchAction={onSearch} />
             </article>
             <article className="relative hidden lg:block w-full h-full">
                 <Image

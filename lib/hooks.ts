@@ -7,7 +7,7 @@ import { Meal } from "./types";
 const fetcher = (url: string) => apiRequest<Meal[]>(url, "GET");
 
 export function useMeals(searchQuery?: string) {
-  const key = searchQuery ? `/Food?name-[${searchQuery}]` : "/Food";
+  const key = searchQuery ? `/Food?name-${searchQuery}` : "/Food";
 
   const { data, error, isLoading, mutate } = useSWR(key, fetcher);
 
