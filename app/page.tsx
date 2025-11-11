@@ -7,7 +7,7 @@ import { MealCard } from "./components/meal-card";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
-  const { meals, isLoading, error, reload } = useMeals();
+  const { meals, isLoading, error } = useMeals();
 
   return (
     <main className="space-y-20">
