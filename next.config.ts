@@ -56,19 +56,19 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
         port: '',
-        pathname: ''
+        pathname: '/**'
       },
       {
         protocol: 'https',
         hostname: 'test.com',
         port: '',
-        pathname: ''
+        pathname: '/**'
       },
       {
         protocol: 'https',
         hostname: 'images.immediate.co.uk',
         port: '',
-        pathname: ''
+        pathname: '/**'
       }
     ]
   }

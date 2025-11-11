@@ -6,6 +6,8 @@ import Image from "next/image";
 import clsx from "clsx";
 import { AddEditDialog } from "./add-edit-dialog";
 import { DeleteDialog } from "./delete-dialog";
+import foodPlaceholder from "@/public/food-placeholder.jpg";
+import restaurantPlaceholder from "@/public/restaurant-placeholder.jpg";
 
 type MealCardProps = {
     meal: Meal;
@@ -21,7 +23,7 @@ export const MealCard = ({ meal }: MealCardProps) => {
                     <span className="font-bold">${meal.Price}</span>
                 </div>
                 {/* Using a placeholder because the api is returning images with different origins and impossible to whitelist them all */}
-                <Image src="/food-placeholder.jpg" alt={meal.name + " image"} fill />
+                <Image src={meal.avatar ?? foodPlaceholder} alt={meal.name + " image"} fill />
             </div>
 
             {/* Extra details */}
@@ -29,7 +31,7 @@ export const MealCard = ({ meal }: MealCardProps) => {
                 <div className="flex items-center gap-6">
                     <div className="w-16 h-16 relative overflow-hidden rounded-xl">
                         {/* Using a placeholder because the api is returning images with different origins and impossible to whitelist them all */}
-                        <Image src="/restaurant-placeholder.jpg" alt="restaurant logo" fill />
+                        <Image src={meal.logo ?? restaurantPlaceholder} alt="restaurant logo" fill />
                     </div>
 
                     <div className="space-y-1">
