@@ -11,8 +11,12 @@ const INITIAL_VISIBLE = 8;
 const LOAD_MORE_STEP = 8;
 
 export default function Home() {
-  const { meals, isLoading, error } = useMeals();
+  const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
+
+  const { meals, isLoading, error } = useMeals(
+    searchQuery.trim() ? searchQuery.trim() : undefined
+  );
 
   const visibleMeals = useMemo(
     () => meals.slice(0, visibleCount),
@@ -25,14 +29,19 @@ export default function Home() {
     setVisibleCount((prev) => prev + LOAD_MORE_STEP);
   };
 
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    setVisibleCount(INITIAL_VISIBLE); // reset pagination on new search
+  };
+
   return (
     <main className="space-y-20">
-      <Hero />
+      <Hero onSearch={handleSearch} />
 
       {/* Featured Meals section */}
       <section className="space-y-22">
-        <h4 className="font-bold text-[43px] text-center">
-          Featured Meals
+        <h4 className="font-bold text-2xl sm:text-3xl lg:text-[43px] text-center">
+          {searchQuery.trim() ? `Search Results for "${searchQuery.trim()}"` : "Featured Meals"}
         </h4>
 
         {

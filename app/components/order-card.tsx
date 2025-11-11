@@ -9,8 +9,25 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useMemo } from "react";
 
-export const OrderCard = () => {
+type OrderCardProps = {
+    onSearchAction: (query: string) => void;
+};
+
+// Search debouncing helper
+function debounce<T extends (...args: Parameters<T>) => void>(
+    fn: T,
+    delay = 400
+) {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    return (...args: Parameters<T>): void => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), delay);
+    };
+}
+
+export const OrderCard = ({ onSearchAction }: OrderCardProps) => {
     const form = useForm<SearchSchema>({
         resolver: zodResolver(searchSchema),
         defaultValues: {
@@ -22,8 +39,12 @@ export const OrderCard = () => {
 
     const values = form.watch();
 
-    const onSubmit = async (data: SearchSchema) => {
-        console.log(data);
+    // Debounced search trigger
+    const debouncedSearch = useMemo(() => debounce(onSearchAction, 400), [onSearchAction]);
+
+    const onSubmit = (data: SearchSchema) => {
+        const query = data.mealName.trim();
+        onSearchAction(query);
     }
 
     return (
@@ -66,8 +87,12 @@ export const OrderCard = () => {
                                             className="border-none w-full grow"
                                             placeholder="What do you like to eat today?"
                                             aria-label="Meal search input"
-                                            // data-error={!!error}
                                             {...field}
+                                            onChange={(e) => {
+                                                const value = e.target.value;
+                                                field.onChange(value);
+                                                debouncedSearch(value);
+                                            }}
                                         />
                                     </div>
                                 </FormControl>

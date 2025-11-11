@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         hostname: 'example.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.pexels.com',
+        port: '',
+        pathname: '/**'
       }
     ]
   }
