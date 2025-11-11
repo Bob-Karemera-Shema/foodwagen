@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={`${sourceSans3.className} antialiased`}
       >
-        <Toaster />
+        <Toaster position="top-right" />
         <Navbar />
         {children}
         <Footer />
