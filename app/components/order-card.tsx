@@ -2,7 +2,7 @@
 
 import { searchSchema, type SearchSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem, FormMessage, useFormField } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { CustomCheckbox } from "@/components/custom/custom-checkbox";
 import { FaMotorcycle, FaShoppingBag } from "react-icons/fa";
 import { Input } from "@/components/ui/input";

@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
 import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const footerGroups = [
     {
@@ -64,7 +67,7 @@ export const Footer = () => {
                                     socialMedia.map((media, i) => {
                                         const { name, Icon } = media;
                                         return (
-                                            <Link key={name + i} href="#" alt={name} className="text-[#f5f5f5]">
+                                            <Link key={name + i} href="#" aria-label={name} className="text-[#f5f5f5]">
                                                 {Icon}
                                             </Link>
                                         )
@@ -77,7 +80,15 @@ export const Footer = () => {
                             <p className="font-bold text-lg text-[#bbbbbb]">
                                 Receive exclusive offers in your mailbox
                             </p>
-                            <div></div>
+                            <div className="flex items-center gap-4">
+                                <div className="rounded-xl pt-[7px] pb-2 pl-4 bg-[#424242] flex items-center gap-2.5 text-[#adadad]">
+                                    <IoMdMail size={24} />
+                                    <Input placeholder="Enter Your email" className="border-none focus-visible:border-none focus-visible:ring-0 text-lg" />
+                                </div>
+                                <Button className=" rounded-xl py-[21px] px-6 bg-linear-to-r from-[#ffb800] to-[#ff8a00] font-bold text-lg shadow-md shadow-[#FFB20E4A]">
+                                    Subscribe
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </article>
